@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/components/adminPanel/authProvider";
 import App from "./App";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
               {children}
             </App>  
           </AuthProvider>
+          <Toaster position="bottom-right" reverseOrder={false} />
       </body>
     </html>
   );
