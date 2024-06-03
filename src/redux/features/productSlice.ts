@@ -1,14 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "./cartSlice";
-
-type ProductInterface = {
-    _id: string,
-    imgSrc: string,
-    fileKey: string,
-    name: string,
-    price: number,
-    category: string
-}
+import { ProductInterface } from "@/app/admin/dashboard/page";
 
 const initialState : ProductInterface = {
     _id: "",
