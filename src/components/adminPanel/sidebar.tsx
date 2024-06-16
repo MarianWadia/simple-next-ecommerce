@@ -44,17 +44,17 @@ export default function Sidebar() {
     const pathname = usePathname()
     console.log(pathname)
   return (
-    <div className='w-1/6 min-h-screen flex flex-col space-y-10 bg-white p-4'>
+    <div className='w-1/5 min-h-screen flex flex-col space-y-4 bg-white p-4'>
         <Link href='/admin/dashboard' className='flex flex-row justify-center gap-2 p-4'>
             <BsCartCheck size={30} color='#BD0A30' />
             <h1 className='font-semibold text-pink text-[25px] '>shopmart</h1>
         </Link>
-        <ul className='space-y-6'>
+        <ul className='space-y-4'>
             {menu.map((item, i) => (
                 <Link 
                     key={i} 
                     href={item.path} 
-                    className={`flex flex-row items-center justify-center gap-4 rounded-lg bg-gray-200 p-4 hover:bg-pink transition-all ease-in-out hover:text-white ${pathname===item.path && 'bg-pink text-white' }`}
+                    className={`flex flex-row items-center justify-center gap-4 rounded-lg bg-gray-200 p-3 hover:bg-pink transition-all ease-in-out hover:text-white ${pathname===item.path && 'bg-pink text-white' }`}
                 >
                     {item.icon}
                     <p>{item.title}</p>

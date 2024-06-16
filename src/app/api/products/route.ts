@@ -6,6 +6,7 @@ export async function GET(){
     try {
         await connectMongoDB();
         const data = await Product.find();
+        console.log(data);
         return NextResponse.json(data);
     } catch (error) {
         console.log(error);
