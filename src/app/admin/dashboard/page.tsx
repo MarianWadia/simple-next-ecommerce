@@ -1,31 +1,43 @@
+"use client"
+import Popup from '@/components/adminPanel/popup'
 import TableRow from '@/components/adminPanel/TableRow'
-import { IProduct } from '@/redux/features/cartSlice'
+import { setLoading } from '@/redux/features/loadingSlice'
+import { useAppDispatch } from '@/redux/hooks'
 import axios from 'axios'
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 export type ProductInterface = {
   _id: string,
   imgSrc: string,
   fileKey: string,
   name: string,
-  price: number,
+  price: string,
   category: string
 }
 
-async function getProducts(){
-  try {
-    const res = await axios.get('http://localhost:3000/api/products')
-    console.log(res)
-    const products = res.data
-    console.log(products)
-    return products
-  } catch (error) {
-   console.log(error) 
-  }
-} 
-export default async function Dashboard() {
-  const products = await getProducts()
-  console.log(products)
+
+export default function Dashboard() {
+  const [products, setProducts] = useState([])
+  const [openPopup, setOpenPopup] = useState(false)
+  const [updateTable, setUpdateTable] = useState(false)
+
+  const dispatch = useAppDispatch()
+  const getProducts = useCallback(async()=>{
+      try {
+        dispatch(setLoading(true));
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`)
+        setProducts(res.data)
+      } catch (error) {
+       console.log(error) 
+      } finally{
+        dispatch(setLoading(false))
+      }
+  },[dispatch])
+
+  useEffect(()=>{
+    getProducts()
+  },[updateTable])
+  
   return (
     <div className='h-[calc(100vh-96px)] p-4 bg-white rounded-lg'>
       <h2 className='text-3xl'>All Products</h2>
@@ -47,13 +59,17 @@ export default async function Dashboard() {
                 product={product}
                 key = {product._id}
                 srNo={index + 1}
+                setUpdateTable={setUpdateTable}
+                setOpenPopup={setOpenPopup}
                 />
             ))
           }
          </tbody>
         </table>
       </div>
-      
+      {openPopup && (
+        <Popup setOpenPopup={setOpenPopup} setUpdateTable={setUpdateTable} />
+      )}
     </div>
   )
 }

@@ -5,6 +5,10 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: "i5.walmartimages.com"
+            },
+            {
+                protocol: "https",
+                hostname: "utfs.io"
             }
         ]
     }
