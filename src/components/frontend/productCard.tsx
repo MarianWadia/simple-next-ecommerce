@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { AiFillStar, AiOutlineShoppingCart, AiOutlineStar } from 'react-icons/ai'
 import { useAppDispatch } from '@/redux/hooks'
 import { addToCart } from '@/redux/features/cartSlice'
+import { makeToast } from '@/utils/helper'
 
 
 type productCardProps ={
@@ -26,6 +27,7 @@ export default function ProductCard({id, name, imgSrc, price, category}: product
         }
         console.log('payload',payload)
         dispatch(addToCart(payload))
+        makeToast('Product added successfully to cart', 'success')
     }
   return (
     <div className='w-[350px] border border-gray-200 flex flex-col h-[500px]'>
