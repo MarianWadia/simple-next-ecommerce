@@ -1,6 +1,9 @@
+"use client"
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from './productCard'
+import { useAppDispatch } from '@/redux/hooks'
+import { setLoading } from '@/redux/features/loadingSlice'
 
 
 type productType = {
@@ -13,14 +16,25 @@ type productType = {
     updatedAt: string
 }
 
-async function getProducts(){
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`)
-    const products = res.data
-    return products
-}
-export default async function TrendingProducts() {
-    const products = await getProducts()
-    // console.log('products', products)
+
+export default function TrendingProducts() {
+    const [products, setProducts] = useState([])
+    const dispatch = useAppDispatch()
+    async function getProducts(){
+       try {
+        dispatch(setLoading(true))
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`)
+        const products = res.data
+        setProducts(products)
+       } catch (error) {
+        console.log(error)
+       }finally{
+        dispatch(setLoading(false))
+       }
+    }
+    useEffect(()=>{
+        getProducts()
+    },[])
   return (
     <div className='mt-12 w-full container px-6 lg:px-18 xl:px-28'>
         <div className='w-full flex flex-row justify-between items-center py-4'>
@@ -31,7 +45,7 @@ export default async function TrendingProducts() {
                 <p>Top Sellers</p>
             </div>
         </div>
-        <div className='grid gap-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-8'>
+        <div className='flex flex-row items-center gap-12 max-w-[800px] flex-wrap'>
             {products.map((product: productType) =>(
                 <ProductCard 
                     key={product._id}

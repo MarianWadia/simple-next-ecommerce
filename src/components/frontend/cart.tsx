@@ -19,10 +19,10 @@ export default function Cart({setShowCart}: cartProps) {
   return (
     <div className='w-full h-screen bg-[#0000007d] fixed top-0 left-0 x-20 overflow-y-scroll'>
         <div className='w-1/4 bg-white min-h-full absolute top-0 right-0 p-6'>
-            <div className='flex items-end justify-end text-[20px] text-black cursor-pointer' onClick={()=>setShowCart(prev => !prev)}>
+            <div className='flex items-end justify-end text-[20px] text-black cursor-pointer' onClick={()=>setShowCart(false)}>
                 <RxCross1 />
             </div>
-            <h2 className='text-gray-500 uppercase text-lg'>your cart</h2>
+            <h2 className='text-gray-500 uppercase text-lg my-4'>your cart</h2>
             {products.map(product => (
                 <ProductCart 
                     key={product.id} 

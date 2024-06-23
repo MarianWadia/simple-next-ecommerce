@@ -1,3 +1,4 @@
+"use client"
 import { useAppSelector } from '@/redux/hooks'
 import Link from 'next/link'
 import React, { Dispatch, SetStateAction } from 'react'
@@ -10,7 +11,7 @@ type navbarProps = {
 
 export default function Navbar({setShowCart}: navbarProps) {
   const cartCount = useAppSelector(state => state.cartReducer.length)
-
+  
   return (
     <nav className='pt-4 sticky w-full bg-white top-0'>
       <div className="container w-full px-6 lg:px-18 xl:px-28">
@@ -36,7 +37,7 @@ export default function Navbar({setShowCart}: navbarProps) {
               </div>
             </div>
 
-            <div className='relative text-gray-600 text-[32px] cursor-pointer' onClick={()=>setShowCart(prev=>!prev)}>
+            <div className='relative text-gray-600 text-[32px] cursor-pointer' onClick={()=>setShowCart(true)}>
               <AiOutlineShoppingCart />
               <div className='absolute -top-1 -right-2 bg-red-600 grid place-items-center text-white rounded-full h-[20px] w-[20px] text-[14px]'>
                 {cartCount}

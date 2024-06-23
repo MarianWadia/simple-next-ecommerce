@@ -2,10 +2,10 @@
 import Banner from "@/components/frontend/banner";
 import Cart from "@/components/frontend/cart";
 import Features from "@/components/frontend/features";
+import Footer from "@/components/frontend/footer";
 import Hero from "@/components/frontend/hero";
 import Navbar from "@/components/frontend/navbar";
 import TrendingProducts from "@/components/frontend/trendingProducts";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
@@ -18,6 +18,7 @@ export default function Home() {
       <Features />
       <TrendingProducts />
       <Banner />
+      <Footer />
     </main>
   );
 }

@@ -24,10 +24,11 @@ export default function ProductCard({id, name, imgSrc, price, category}: product
             img: imgSrc,
             quantity: 1
         }
+        console.log('payload',payload)
         dispatch(addToCart(payload))
     }
   return (
-    <div className='w-[350px] border border-gray-200 flex flex-col'>
+    <div className='w-[350px] border border-gray-200 flex flex-col h-[500px]'>
         <div className='grid place-items-center'>
             <Image src={imgSrc} width={300} height={300} alt='product image' />
         </div>
@@ -46,7 +47,7 @@ export default function ProductCard({id, name, imgSrc, price, category}: product
                 <p className='text-accent text-lg font-bold '>${price}</p>
                 <div 
                     className='flex flex-row items-center justify-center gap-1 text-white bg-pink py-2 px-3 rounded-sm hover:bg-[#8A071F] transition-all ease-in-out'
-                    onClick={()=>{addProductToCart}}
+                    onClick={()=>{addProductToCart()}}
                 >
                     <AiOutlineShoppingCart />
                     <button>Add To Cart</button>
