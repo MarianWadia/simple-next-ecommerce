@@ -11,7 +11,7 @@ export type ProductInterface = {
   imgSrc: string,
   fileKey: string,
   name: string,
-  price: string,
+  price: number,
   category: string
 }
 

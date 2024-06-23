@@ -14,7 +14,7 @@ type IPayload = {
     fileKey: null|string,
     name: string,
     category: string,
-    price: string
+    price: number
 }
 
 export default function ProductForm() {
