@@ -13,7 +13,7 @@ export default function Navbar({setShowCart}: navbarProps) {
 
   return (
     <nav className='pt-4 sticky w-full bg-white top-0'>
-      <div className="container w-full px-12 lg:px-18 xl:px-28">
+      <div className="container w-full px-6 lg:px-18 xl:px-28">
         <div className='flex w-full items-center justify-between'>
           <Link href='/' className='flex flex-row justify-center gap-2'>
               <h1 className='font-semibold text-gray-800 text-[25px] hover:text-pink transition-all ease-in-out'>Shopmart</h1>

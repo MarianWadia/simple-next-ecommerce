@@ -1,5 +1,6 @@
 "use client"
 import Cart from "@/components/frontend/cart";
+import Features from "@/components/frontend/features";
 import Hero from "@/components/frontend/hero";
 import Navbar from "@/components/frontend/navbar";
 import Image from "next/image";
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar setShowCart={setShowCart} />
       {showCart && <Cart setShowCart={setShowCart} />}
       <Hero />
+      <Features />
     </main>
   );
 }
