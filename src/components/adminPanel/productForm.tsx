@@ -25,7 +25,7 @@ export default function ProductForm() {
         fileKey: null,
         name: "",
         category: "",
-        price: ""
+        price: 0
     })
     const handleSubmit = async(e: FormEvent)=>{
         e.preventDefault();
@@ -39,7 +39,7 @@ export default function ProductForm() {
                     fileKey: null,
                     name: "",
                     category: "",
-                    price: ""
+                    price: 0
                 })
                 router.replace('/admin/dashboard')
             }
@@ -115,7 +115,7 @@ export default function ProductForm() {
                 onChange={(e)=>{
                     setPayload({
                         ...payload,
-                        price: e.target.value
+                        price: Number(e.target.value)
                     })
                 }}
             />
