@@ -76,7 +76,7 @@ export default function Popup({setUpdateTable, setOpenPopup}: popUpProps) {
             value={inputData.price}
             placeholder='price'
             onChange={(e)=>{
-              setInputData({...inputData, price: e.target.value})
+              setInputData({...inputData, price: Number(e.target.value)})
             }}
           />
           <button className='bg-green-500 text-white text-xl rounded-md p-3 text-center self-end w-[120px]'>Save</button>
