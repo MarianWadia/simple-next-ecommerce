@@ -22,8 +22,8 @@ export const cartSlice = createSlice({
                 return [...state, {...action.payload, quantity: action.payload.quantity + 1}]
             }
         },
-        removeFromCart: (state, action:PayloadAction<IProduct>)=>{
-            return state.filter(product => product.id !== action.payload.id)
+        removeFromCart: (state, action:PayloadAction<string>)=>{
+            return state.filter(product => product.id !== action.payload)
         },
         decreaseQuantity: (state, action: PayloadAction<IProduct>)=>{
             const itemIndex = state.findIndex((product) => product.id === action.payload.id)
