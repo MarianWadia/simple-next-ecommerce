@@ -45,7 +45,7 @@ export default function Sidebar() {
     console.log(pathname)
   return (
     <div className='w-1/5 min-h-screen flex flex-col space-y-4 bg-white p-4'>
-        <Link href='/admin/dashboard' className='flex flex-row justify-center gap-2 p-4'>
+        <Link href='/admin/dashboard' className='flex flex-row justify-center gap-2'>
             <BsCartCheck size={30} color='#BD0A30' />
             <h1 className='font-semibold text-pink text-[25px] '>shopmart</h1>
         </Link>

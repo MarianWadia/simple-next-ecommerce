@@ -14,6 +14,7 @@ export default function Layout({ children } : { children : React.ReactNode}) {
     if(!session?.user){
         return <Login />
     }
+    console.log(session.user)
 
 
   return (
